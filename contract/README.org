@@ -1,34 +1,23 @@
-#+TITLE: Detail
-
-* Table Of Content :TOC:
-- [[#deploy][Deploy]]
-- [[#mint_nft][mint_nft]]
-- [[#get_token_id][get_token_id]]
-- [[#get_total_tokens][get_total_tokens]]
-- [[#get_all_tokens][get_all_tokens]]
-- [[#mint_nft-more-information][mint_nft more information]]
+#+TITLE: Details
 
 * Deploy
-#+begin_src sh :exports no :results output
+#+begin_src
 pnpm run deploy
 #+end_src
 
-#+RESULTS:
-#+begin_example
+#+begin_src
 >> Deploying contract
 Starting deployment. Account id: dev-1672666255549-42728942536096, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: build/hello_near.wasm
 Transaction Id FJTJUZhTzaXesfE9VUK7J7DFJXXsmRE4EwU5KrF1xJwo
 To see the transaction in the transaction explorer, please open this url in your browser
 https://explorer.testnet.near.org/transactions/FJTJUZhTzaXesfE9VUK7J7DFJXXsmRE4EwU5KrF1xJwo
 Done deploying to dev-1672666255549-42728942536096
-#+end_example
+#+end_src
 
-#+NAME: initilized
-#+begin_src sh :exports no :results output
+#+begin_src
 near call dev-1672666255549-42728942536096 init '{"owner_id": "dangquangvurust.testnet", "prefix": "owner"}' --accountId dev-1672666255549-42728942536096
 #+end_src
 
-#+RESULTS: initilized
 : Scheduling a call: dev-1672666255549-42728942536096.init({"owner_id": "dangquangvurust.testnet", "prefix": "owner"})
 : Doing account.functionCall()
 : Transaction Id 9Gt61BmvU4gZoktjzasFjTMvztr8KoApUrcPv7F9PSkN
@@ -37,11 +26,10 @@ near call dev-1672666255549-42728942536096 init '{"owner_id": "dangquangvurust.t
 : ''
 
 * mint_nft
-#+begin_src sh :exports no :results output
+#+begin_src
 near call dev-1672666255549-42728942536096 mint_nft '{"token_owner_id": "vugomars.testnet"}' --accountId dev-1672666255549-42728942536096
 #+end_src
 
-#+RESULTS:
 : Scheduling a call: dev-1672666255549-42728942536096.mint_nft({"token_owner_id": "vugomars.testnet"})
 : Doing account.functionCall()
 : Transaction Id 6ucrWjAWuckE65PjDpByun1X1kqw14sCNZ3MVVbVgrNE
@@ -50,7 +38,7 @@ near call dev-1672666255549-42728942536096 mint_nft '{"token_owner_id": "vugomar
 : { token_id: 0, owner_id: 'vugomars.testnet' }
 
 
-#+begin_src sh :exports no :results output
+#+begin_src
 near call dev-1672666255549-42728942536096 mint_nft '{"token_owner_id": "vugomars10.testnet"}' --accountId dev-1672666255549-42728942536096
 #+end_src
 
@@ -63,7 +51,7 @@ near call dev-1672666255549-42728942536096 mint_nft '{"token_owner_id": "vugomar
 : { token_id: 1, owner_id: 'vugomars10.testnet' }
 
 * get_token_id
-#+begin_src sh :exports no :results output
+#+begin_src
 near view dev-1672666255549-42728942536096 get_token_by_id '{"token_id": 1}'
 #+end_src
 
@@ -72,21 +60,19 @@ near view dev-1672666255549-42728942536096 get_token_by_id '{"token_id": 1}'
 : { token_id: 1, owner_id: 'vugomars10.testnet' }
 
 * get_total_tokens
-#+begin_src sh :exports no :results output
+#+begin_src
 near view dev-1672666255549-42728942536096 get_supply_tokens
 #+end_src
 
-#+RESULTS:
 : View call: dev-1672666255549-42728942536096.get_supply_tokens()
 : 2
 
 * get_all_tokens
-#+begin_src sh :exports no :results output
+#+begin_src
 near view dev-1672666255549-42728942536096 get_all_tokens
 #+end_src
 
-#+RESULTS:
-#+begin_example
+#+begin_src
 View call: dev-1672666255549-42728942536096.get_all_tokens()
 [
   { token_id: 0, owner_id: 'vugomars.testnet' },
@@ -108,15 +94,14 @@ View call: dev-1672666255549-42728942536096.get_all_tokens()
     level: 2
   }
 ]
-#+end_example
+#+end_src
 
 * mint_nft more information
-#+begin_src sh :exports no :results output
+#+begin_src
 near call dev-1672666255549-42728942536096 mint_nft '{"token_owner_id": "vugomars.testnet", "name": "vugomars #2", "description": "this is my image for my course", "media_uri": "https://static.toiimg.com/thumb/msid-58475411,width-748,height-499,resizemode=4,imgsize-142947/.jpg", "level": 2}' --accountId dev-1672666255549-42728942536096
 #+end_src
 
-#+RESULTS:
-#+begin_example
+#+begin_src
 Scheduling a call: dev-1672666255549-42728942536096.mint_nft({"token_owner_id": "vugomars.testnet", "name": "vugomars #2", "description": "this is my image for my course", "media_uri": "https://static.toiimg.com/thumb/msid-58475411,width-748,height-499,resizemode=4,imgsize-142947/.jpg", "level": 2})
 Doing account.functionCall()
 Transaction Id EEuSaHXs4EgotqzD1nyyFv1exwTaWHTrwYtHLcVMstYP
@@ -130,4 +115,8 @@ https://explorer.testnet.near.org/transactions/EEuSaHXs4EgotqzD1nyyFv1exwTaWHTrw
   media_uri: 'https://static.toiimg.com/thumb/msid-58475411,width-748,height-499,resizemode=4,imgsize-142947/.jpg',
   level: 2
 }
-#+end_example
+#+end_src
+
+* Home Work
+- Viêt tất cả function với element 1 standard token trên =https://nomicon.io=
+[[https://nomicon.io/Standards/Tokens/NonFungibleToken/][Standard Non-Fungible Token]]
