@@ -119,5 +119,5 @@ https://explorer.testnet.near.org/transactions/EEuSaHXs4EgotqzD1nyyFv1exwTaWHTrw
 
 * Home Work
 - Viêt tất cả function với element 1 standard token trên =https://nomicon.io=
-[[https://nomicon.io/Standards/Tokens/NonFungibleToken/][Standard Non-Fungible Token]]
-[[https://github.com/near/near-sdk-js][Tai lieu Tham khao]]
+- [[https://nomicon.io/Standards/Tokens/NonFungibleToken/][Standard Non-Fungible Token]]
+- [[https://github.com/near/near-sdk-js][Tai lieu Tham khao]]
