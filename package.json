@@ -1,0 +1,18 @@
+{
+  "name": "ts-contract",
+  "version": "1.0.0",
+  "license": "(MIT AND Apache-2.0)",
+  "scripts": {
+    "deploy": "cd contract && pnpm run deploy",
+    "build": "pnpm run build:contract",
+    "build:contract": "cd contract && pnpm run build",
+    "test": "pnpm run test:unit && pnpm run test:integration",
+    "test:unit": "cd contract && pnpm test",
+    "test:integration": "cd integration-tests && pnpm test -- -- \"./contract/build/hello_near.wasm\"",
+    "postinstall": "echo no frontend && cd integration-tests && pnpm install && cd .. && cd contract && pnpm install"
+  },
+  "devDependencies": {
+    "near-cli": "^3.3.0"
+  },
+  "dependencies": {}
+}
