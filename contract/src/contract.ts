@@ -91,7 +91,7 @@ class Contract {
   }
 
   @view({})
-  get_all_tokens({ start, max }: { start?: number; max?: number }) {
+  get_all_tokens() {
     var all_tokens = [];
 
     for (var i = 0; i < this.token_id; i++) {
