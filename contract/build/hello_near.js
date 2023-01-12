@@ -558,10 +558,7 @@ let Contract = (_dec = NearBindgen({}), _dec2 = initialize({}), _dec3 = call({})
   get_supply_tokens() {
     return this.token_id;
   }
-  get_all_tokens({
-    start,
-    max
-  }) {
+  get_all_tokens() {
     var all_tokens = [];
     for (var i = 0; i < this.token_id; i++) {
       all_tokens.push(this.token_by_id.get(i.toString()));

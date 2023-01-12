@@ -1,12 +1,4 @@
-import {
-  NearBindgen,
-  near,
-  call,
-  view,
-  initialize,
-  LookupMap,
-  UnorderedMap,
-} from "near-sdk-js";
+import { NearBindgen, call, view, initialize, LookupMap } from "near-sdk-js";
 import { AccountId } from "near-sdk-js/lib/types";
 
 class Token {
