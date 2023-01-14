@@ -1,7 +1,15 @@
-import { call, initialize, LookupMap, UnorderedMap, view } from "near-sdk-js";
+import {
+  assert,
+  call,
+  initialize,
+  LookupMap,
+  UnorderedMap,
+  UnorderedSet,
+  view,
+} from "near-sdk-js";
 import { AccountId } from "near-sdk-js/lib/types";
 import { NFTContractMetadata, Token, TokenId, TokenMetadata } from "./metadata";
-import { check_onwer } from "./utils";
+import { add_token_to_owner, check_onwer } from "./utils";
 
 export class Contract {
   owner_id: AccountId;
@@ -24,13 +32,31 @@ export class Contract {
     token_id,
     owner_id,
     metadata,
-    receiver_id,
   }: {
     token_id: TokenId;
     owner_id: AccountId;
     metadata: TokenMetadata;
     receiver_id: AccountId;
-  }) {}
+  }): void {
+    const token = new Token({
+      token_id,
+      owner_id,
+      metadata,
+    });
+    assert(!this.tokens_by_id.containsKey(token_id), "Token Already Exists");
+    this.tokens_by_id.set(token_id, token);
+
+    let set_tokens = check_onwer(this.tokens_per_owner.get(owner_id));
+    if (set_tokens == null) {
+      set_tokens = new UnorderedSet("tokens_per_owner" + owner_id);
+    }
+
+    set_tokens.set(token_id);
+
+    this.tokens_per_owner.set(owner_id, set_tokens);
+
+    this.token_metadata_by_id.set(token_id, metadata);
+  }
 
   @call({ payableFunction: true })
   nft_transfer({

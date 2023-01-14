@@ -102,6 +102,10 @@ export interface NonFungibleTokenMeatadataProvider {
 
 export type TokenId = string;
 
+export class IdToken {
+  owner_id: AccountId;
+}
+
 export class Token {
   public token_id: TokenId;
   public owner_id: AccountId;
